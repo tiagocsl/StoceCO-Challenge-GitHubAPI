@@ -9,11 +9,6 @@ Desenvolver uma API de integração com o GitHub utilizando Python ou Go.
 ##### `USO`
 A Aplicação utiliza docker para facilitar a compilação do ambiente de desenvolvimento em qualquer máquina. Para rodar o projeto basta buildar a imagem e rodar o container dentro do diretório.
 
-Para rodar os tests, basta acessar a pasta raiz com seu CLI de preferência e rodar
-```
-py -m unittest
-`````
-
 ```docker
 docker build -f .\Dockerfile -t python/integration .
 docker run -itd --name python_api_integration -p 5000:5000 python/integration
@@ -40,6 +35,12 @@ ou
 GET /api/repos/tiagocsl/StoceCO-Challenge-GitHubAPI/uninteracted-pull
 ```
 O USER e REPO devem ser válidos ou existentes, caso contrário, será retornado um erro "An error ocurred in your request!"
+
+##### ```Tests```
+Para rodar os tests, basta acessar a pasta raiz com seu CLI de preferência e rodar
+```
+py -m unittest
+`````
 
 ##### ``A Aplicação``
 Para criar a aplicação me baseei em projetos que já fiz em outras linguagens e ambientes, organizar o projeto com um controller, uma classe de serviço e um Util, me ajudou a deixar o código mais organizado e legível.
