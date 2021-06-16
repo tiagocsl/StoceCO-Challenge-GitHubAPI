@@ -1,0 +1,99 @@
+{
+	"variables": [],
+	"info": {
+		"name": "GitHub Integration",
+		"_postman_id": "b8587aee-a0f5-34a9-2203-cc93baf531ce",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Popular Repository",
+			"request": {
+				"url": "http://localhost:5000//api/repos/<USER>/popular-repository",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Popular Issue",
+			"request": {
+				"url": "http://localhost:5000/api/repos/<USER>/<REPO>/popular-issue",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Uninteracted Pull",
+			"request": {
+				"url": "http://localhost:5000/api/repos/<USER>/<REPO>/uninteracted-pull",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GitHub Repos View",
+			"request": {
+				"url": {
+					"raw": "https://api.github.com/users/<USER>/repos?per_page=100",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"users",
+						"<USER>",
+						"repos"
+					],
+					"query": [
+						{
+							"key": "per_page",
+							"value": "100",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GitHub Issues View",
+			"request": {
+				"url": "https://api.github.com/repos/<USER>/<REPO>/issues",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GitHub Pulls View",
+			"request": {
+				"url": "https://api.github.com/repos/<USER>/<REPO>/pulls",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
