@@ -27,8 +27,22 @@ Feito isso, para consumir o serviço, pode ser usado o programa Postman ou Insom
 A documentação pode ser encontrada em http://localhost:5000/api/docs
 ```
 
+
 Para realizar um pedido bastar alterar <user> e <repo> por um úsuario e um repositório que deseja:
 O USER e REPO devem ser válidos ou existentes, caso contrário, será retornado um erro "An error ocurred in your request!"
+
+O endpoit `````POST /StoneCO-Challenge/api/repos/pull/create-comment````` em especifico, espera um body com o seguinte modelo:
+`````
+{
+	"fst_user": "<FST_USER>",
+	"fst_repository": "<FST_REPO>",
+	"fst_pull_number": "<PULL_NUMBER_INT>",
+	"fst_comment_id": "<COMMENT_ID_int>",
+	"snd_user":"<SND_USER>",
+	"snd_repository":"<SND_REPO>",
+	"snd_pull_number":"<SND_PULL_NUMBER_INT>"
+}
+`````
 
 ##### ```Tests```
 Para rodar os tests, basta acessar a pasta raiz com seu CLI de preferência e rodar
