@@ -8,26 +8,26 @@ ns = api.namespace("StoneCO-Challenge",
                     description="List of Operations")
 
 
-@ns.route('/home')
+@api.route('/home')
 class Hello(Resource):
     def get(self,):
         return "Hello my dear friend, welcome to my humble Github integration :)"        
 
 
-@ns.route('/api/authenticate')
+@api.route('/api/authenticate')
 class login(Resource):
     def get(self,):
         return redirect(services.authenticate_oauth())
 
 
-@ns.route('/api/authenticate/callback')
+@api.route('/api/authenticate/callback')
 class login(Resource):
     def get(self,):
         code = request.args.get('code')
         return services.authenticate_oauth_callback(code)
 
 
-@ns.route('/test-redis')
+@api.route('/test-redis')
 class testing_redis(Resource):
     def get(self,):
         try:
@@ -36,7 +36,7 @@ class testing_redis(Resource):
             print(e)
 
 
-@ns.route('/api/repos/<string:user>/popular-repository')
+@api.route('/api/repos/<string:user>/popular-repository')
 @ns.response(404, "An error ocurred in your request!")
 class popular_repository(Resource):
     @ns.response(200, "successfully")
@@ -44,7 +44,7 @@ class popular_repository(Resource):
         return services.most_popular_repo(user)
 
 
-@ns.route('/api/repos/<string:user>/<string:repo>/popular-issue')
+@api.route('/api/repos/<string:user>/<string:repo>/popular-issue')
 @ns.response(404, "An error ocurred in your request!")
 class popular_issues(Resource):
     @ns.response(200, "successfully")
@@ -52,7 +52,7 @@ class popular_issues(Resource):
         return services.most_popular_issue(user, repo)
 
 
-@ns.route('/api/repos/<string:user>/<string:repo>/uninteracted-pull')
+@api.route('/api/repos/<string:user>/<string:repo>/uninteracted-pull')
 @ns.response(404, "An error ocurred in your request!")
 class uninteracte_pull_request(Resource):
     @ns.response(200, "successfully")
@@ -60,10 +60,8 @@ class uninteracte_pull_request(Resource):
         return services.uninteracted_pull(user, repo)
 
 
-@ns.route('/api/repos/pull/create-comment')
-@ns.response(404, "An error ocurred in your request!")
+@api.route('/api/repos/pull/create-comment')
 class comment_copy_delete(Resource):
-    @ns.response(201, "comment created/updated successfully")
     def post(self,):
         data = request.json
         fst_user = data['fst_user']
@@ -78,9 +76,7 @@ class comment_copy_delete(Resource):
                                                 snd_user, snd_repo, snd_pr_number)
 
 
-@ns.route('/api/repos/<string:user>/<string:repo>/create-gitignore')
-@ns.response(404, "An error ocurred in your request!")
+@api.route('/api/repos/<string:user>/<string:repo>/create-gitignore')
 class create_gitignore(Resource):
-    @ns.response(201, "file created successfully")
     def post(self, user, repo):
         return services.create_gitignore(user, repo)        
