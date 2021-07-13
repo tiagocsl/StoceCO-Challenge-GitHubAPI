@@ -1,11 +1,11 @@
 class Sorters():
-    def sortByStars(s):
+    def sort_by_stars(s):
         return s["stargazers_count"]
 
-    def sortByComments(s):
+    def sort_by_comments(s):
         return s["comments"]    
 
-    def sortByNumber(s):
+    def sort_by_number(s):
         return s["number"]
 
 class Returns_JSONs():

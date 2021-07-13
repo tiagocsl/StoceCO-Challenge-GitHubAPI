@@ -1,2 +1,5 @@
-flask
+flask==1.1.2
 flask_restx
+requests
+redis
+PyGithub

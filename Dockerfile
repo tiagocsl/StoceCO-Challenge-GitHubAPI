@@ -1,11 +1,8 @@
 FROM python:3.8-alpine
 
-WORKDIR /src
-COPY . /src
+WORKDIR /github-integration-challenge
+COPY . .
 
-RUN py -m venv venv && \
-    venv/bin/pip install --upgrade pip && \
-    venv/bin/pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
-EXPOSE 5000
-CMD ['main.py']
+CMD ["python", "main.py", "--host=0.0.0.0"]
