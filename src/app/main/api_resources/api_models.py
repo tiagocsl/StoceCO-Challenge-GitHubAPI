@@ -43,16 +43,16 @@ create_or_overwrite_gitignore = api_v1.model("Create or overwrite gitignore file
 # Modelos api v1 
 # ------------------------
 most_popular_repo_reponse = {200: 'OK',
-                             404: 'An error ocurred in your request!'}
+                             400: 'An error ocurred in your request!'}
 
 most_popular_issue_reponse = {200: 'OK',
-                              404: 'An error ocurred in your request!'}
+                              400: 'An error ocurred in your request!'}
 
 uninteracte_pull_request_reponse = {200: 'OK',
-                                    404: 'An error ocurred in your request!'}
+                                    400: 'An error ocurred in your request!'}
 
 copy_and_delete_comment_reponse = {201: 'The original comment has been successfully replicated and deleted!',
-                                   404: 'An error ocurred in your request!'}
+                                   400: 'An error ocurred in your request!'}
 
 create_or_overwrite_gitignore_reponse = {201: 'The GitIgnore file was created or overwritten successfully!',
-                                         404: 'An error ocurred in your request!'}
+                                         400: 'An error ocurred in your request!'}
