@@ -83,7 +83,7 @@ O Docker-compose cria uma imagem pronta do Python com a distribuição Alpine do
 ````````            
 ##### ``Considerações``
 Percebi que a estrutura do projeto poderia melhorar, então visando a melhoria, estudei mais afundo e alterei toda a estruturação das pastas e dos arquivos hoje (19/07).
-Sobre a documentação, tentei melhorar o swagger, visando melhorar o entendimento de como os endpoints se comportam.
+Sobre a documentação, tentei melhorar o swagger, visando melhorar o entendimento de como os endpoints se comportam, e também foi criado um versionamento de API.
 
 
 Alguns pontos que estou melhorando: 
