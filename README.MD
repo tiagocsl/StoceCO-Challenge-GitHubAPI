@@ -84,6 +84,7 @@ O Docker-compose cria uma imagem pronta do Python com a distribuição Alpine do
 ##### ``Considerações``
 Percebi que a estrutura do projeto poderia melhorar, então visando a melhoria, estudei mais afundo e alterei toda a estruturação das pastas e dos arquivos hoje (19/07).
 Sobre a documentação, tentei melhorar o swagger, visando melhorar o entendimento de como os endpoints se comportam, e também foi criado um versionamento de API.
+Outra coisa que alterei, foi a questão das variáveis CLIENT_ID e CLIENT_SECRET que eu havia deixado no arquivo services.py, tinha deixado lá sem preocupações pois é apenas um app de testes e não me preocupei muito com as secrets, porém fui leigo em esquecer de deixar isso numa ENVVAR. Com isso em mente, introduzi essas variáveis direto no build do Docker, apesar de ainda estarem expostas no github, dessa forma é mais saudável pro código, pois não deixo solto num arquivo que não tem essa responsabilidade.
 
 
 Alguns pontos que estou melhorando: 
