@@ -2,8 +2,12 @@ version: '3'
 services:
     web:
         build: .
-        command: python main.py --host=0.0.0.0
+        command: flask run
         ports:
             - 5000:5000
+        environment: 
+            - CLIENT_ID=215d69f063d510243a71
+            - CLIENT_SECRET=4d0a1a1a21f72007a5e80d7034d9cd04b24f2c5f
+            - REDIRECT_URI=http://localhost:5000/api/v1/authenticate/callback
     cache:
         image: redis:alpine

@@ -1,6 +1,6 @@
-#`Desafio StoneCo`
+`Desafio StoneCo`
 
-#`Desafio para vaga de desenvolvedor júnior`
+`Desafio para vaga de desenvolvedor júnior`
 ------------------------------
 
 ##### `Objetivo`
@@ -10,39 +10,24 @@ Desenvolver uma API de integração com o GitHub utilizando Python ou Go.
 A Aplicação utiliza docker para facilitar a compilação do ambiente de desenvolvimento em qualquer máquina. Para rodar o projeto basta buildar a imagem e rodar o container dentro do diretório.
 
 ```docker
+docker-compose build
+&
 docker-compose up
 `````
 
 O serviço rodará em:
 ````
-http://localhost:5000/
+http://localhost:5000/api/v1/
 ````
-Para começar, acesse http://localhost:5000/api/authenticate para permitir acesso á rotas especiais.
-Feito isso, para consumir o serviço, pode ser usado o programa Postman ou Insomnia (foi utilizado insomnia). Estes permitem alterar os verbos do protocolo HTTP e mandar uma requisição complexa com muita simplicidade.
-(Há dois arquivos na pasta raiz, onde se pode importar a pasta com os requests que utilizei durante o desenvolvimento)
+Para começar, acesse http://localhost:5000/api/v1/authenticate para permitir acesso á rotas especiais.
+Feito isso, para consumir o serviço, pode ser usado o programa Postman, Insomnia ou até mesmo o swagger na rota /docs .
 
 ##### ```ENDPOINTS```
 
 ```
-A documentação pode ser encontrada em http://localhost:5000/api/docs
+A documentação pode ser encontrada em http://localhost:5000/docs
 ```
 
-
-Para realizar um pedido bastar alterar <user> e <repo> por um úsuario e um repositório que deseja:
-O USER e REPO devem ser válidos ou existentes, caso contrário, será retornado um erro "An error ocurred in your request!"
-
-O endpoit `````POST /StoneCO-Challenge/api/repos/pull/create-comment````` em especifico, espera um body com o seguinte modelo:
-`````
-{
-	"fst_user": "<FST_USER>",
-	"fst_repository": "<FST_REPO>",
-	"fst_pull_number": "<PULL_NUMBER_INT>",
-	"fst_comment_id": "<COMMENT_ID_int>",
-	"snd_user":"<SND_USER>",
-	"snd_repository":"<SND_REPO>",
-	"snd_pull_number":"<SND_PULL_NUMBER_INT>"
-}
-`````
 
 ##### ```Tests```
 Para rodar os tests, basta acessar a pasta raiz com seu CLI de preferência e rodar
@@ -56,43 +41,54 @@ Para criar a aplicação me baseei em projetos que já fiz em outras linguagens 
 O Docker-compose cria uma imagem pronta do Python com a distribuição Alpine do Linux presente no DockerHub, e uma imagem do Redis.
 
 
-<small>Estrutura de pastas:</small>
+<small>Estrutura de pastas v2.0:</small>
 ````````
 /
 |   .gitignore
 |   .dockerignore
-|   main.py
-|   test.py
 |   Dockerfile
 |   docker-compose
 |   requirements.txt
 |   README.MD
-|   GitHub Integration.insomnia_collection
-|   GitHub Integration.postman_collection
 |   
 \---src
     |   
-    |   
-    +---resources
-    |   |---controllers.py
-    |   |---services.py
-    |   |---utils.py
-    |            
-    |           
-    +---server
-    |   |---instance.py
-    |             
+    \---app
+        |
+        |   app.py
+        |   
+        \---main        
+        |   |   
+        |   |
+        |   \---controllers
+        |   |   |---github_authentication.py
+        |   |   |---github_integration.py
+        |   |          
+        |   \---services
+        |   |   |---github_authentication_service.py
+        |   |   |---github_integration_service.py
+        |   |
+        |   \---utils
+        |   |   |---utilitaries.py  
+        |   |
+        |   |   api.py
+        |   |   cache_instance.py
+        |   |   config.py
+        |   
+        \---test       
+            |   tests.py 
+            | 
       
 
 ````````            
 ##### ``Considerações``
-Bom, da ultima versão pra cá, a unica coisa que faltou implementar, foi o Jenkins. Eu realmente queria ter implementado ele,
-mas preferi focar nas outras coisas.
-Sobre a documentação, eu já tinha configurado o endpoint para acessar o swagger, porém esqueci de falar sobre aqui no README.
+Percebi que a estrutura do projeto poderia melhorar, então visando a melhoria, estudei mais afundo e alterei toda a estruturação das pastas e dos arquivos hoje (19/07).
+Sobre a documentação, tentei melhorar o swagger, visando melhorar o entendimento de como os endpoints se comportam.
 
 
-Alguns pontos que pretendo melhorar no futuro: 
-Implementar o Fabric para automatizações de deploys e o Jenkins para CI e CD;
+Alguns pontos que estou melhorando: 
+Eu tinha dito que iria implementar o Fabric e o Jenkins, mas achei uma solução talvez mais óbvia, que no caso é o Github Actions (no momento estou implementando o mesmo).
+
 
 
 
